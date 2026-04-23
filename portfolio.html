@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+ <title>made</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* إخفاء الماوس الطبيعي */
+body{
+  cursor:none;
+}
+
+/* الدائرة الكبيرة */
+.cursor{
+  width:40px;
+  height:40px;
+  border:2px solid #00cfc8;
+  border-radius:50%;
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+  transition:0.15s ease;
+  z-index:9999;
+  animation:spin 4s linear infinite;
+}
+
+/* النقطة الصغيرة */
+.cursor-dot{
+  width:8px;
+  height:8px;
+  background:#00cfc8;
+  border-radius:50%;
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* تكبير عند الـ hover */
+.hover-effect{
+  transform:scale(1.8);
+  background:rgba(0,207,200,0.1);
+}
+
+/* دوران */
+@keyframes spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+/* ===== أساسيات ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Tajawal', sans-serif;
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:999;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+   background:#0b1220;
+  box-shadow:0 5px 20px rgb(0, 0, 0);
+}
+
+/* ===== اللوجو ===== */
+.logo img{
+  height:28px;
+}
+
+/* ===== النص ===== */
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:18px;
+}
+
+nav ul li{
+  position:relative;
+}
+
+nav ul li a{
+  color:rgb(0, 0, 0);
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+}
+
+/* ===== Dropdown خدمات ===== */
+.dropdown{
+  position:absolute;
+  top:100%;
+  right:0;
+
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(10px);
+
+  width:260px;
+  border-radius:10px;
+  padding:10px;
+
+  display:none;
+  flex-direction:column;
+  gap:8px;
+}
+
+.dropdown h4{
+  color:#0b0b0b;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.dropdown a{
+  color:#050505;
+  font-size:13px;
+  padding:4px;
+  text-decoration:none;
+}
+
+.dropdown a:hover{
+  background:rgba(255,255,255,0.1);
+  border-radius:5px;
+}
+
+nav ul li:hover .dropdown{
+  display:flex;
+}
+
+/* ===== لغة ===== */
+.lang{
+  position:relative;
+  color:rgb(254, 251, 251);
+  cursor:pointer;
+  font-size:14px;
+}
+
+.lang-box{
+  display:none;
+  position:absolute;
+  top:100%;
+  right:0;
+
+  background:white;
+  border-radius:8px;
+  overflow:hidden;
+
+  min-width:120px;
+}
+
+.lang-box a{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  padding:8px;
+  text-decoration:none;
+  color:black;
+  font-size:13px;
+}
+
+.lang:hover .lang-box{
+  display:block;
+}
+
+/* ===== زرار ===== */
+.btn {
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg, #2FAF9B,
+    #2D8FB0,
+    #1E3A8A ); /* مزيج 3 ألوان */
+  transition: transform 0.3s ease;
+
+}
+/* ===== الروابط الأساسية ===== */
+nav ul li a{
+  color:rgb(255, 252, 252);
+  text-decoration:none;
+  font-weight:600;
+  padding:5px 8px;
+  border-radius:6px;
+  transition:0.3s;
+}
+
+/* Hover للصفحات الأساسية */
+nav ul li a:hover{
+  background:rgba(0,0,0,0.25);
+  color:#6dfff0;   /* لون مختلف */
+}
+
+/* ===== Dropdown (الخدمات الداخلية) ===== */
+.dropdown a{
+  color:#ddd;
+  text-decoration:none;
+  font-size:13px;
+  padding:5px;
+  border-radius:5px;
+  transition:0.3s;
+}
+
+/* Hover للخدمات (تركواز) */
+.dropdown a:hover{
+  color:#00d2d3;
+  transform:translateX(-4px);
+  background:rgba(255,255,255,0.1);
+}
+
+/* ===== عناوين الأقسام داخل الخدمات ===== */
+.dropdown h3{
+  color:#00d2d3;
+  font-size:13px;
+  margin:8px 0 3px;
+}
+
+/* ===== وسط المنيو ===== */
+.center ul{
+  display:flex;
+  gap:15px;
+}
+
+/* ===== left/right ===== */
+.left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.lang-box a img{
+  width:18px;
+  height:12px;
+  object-fit:cover;
+  border-radius:2px;
+}
+/* ===== Responsive ===== */
+/* زرار المينيو */
+.menu-toggle{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+  z-index:1001;
+}
+
+/* موبايل */
+@media(max-width:768px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .nav{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:75%;
+    height:100%;
+    background:#0b0b0b;
+    transition:0.4s;
+    padding:20px;
+    z-index:1000;
+  }
+
+  .nav.active{
+    right:0;
+  }
+
+  .nav ul{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .nav ul li a{
+    color:white;
+    font-size:18px;
+  }
+
+  /* Dropdown */
+  .dropdown{
+    position:static;
+    background:#111;
+    display:none;
+    padding:10px;
+    border-radius:10px;
+  }
+
+  .has-dropdown.active .dropdown{
+    display:block;
+  }
+}
+.blog{
+  padding:80px 20px;
+  text-align:center;
+  background:#fff; /* 👈 خلفية بيضاء */
+  overflow:hidden;
+  color:#000;
+}
+
+/* الهيدر */
+.blog-header .badge{
+  display:inline-block;
+  background:#00cfc8;
+  color:#000;
+  padding:10px 25px;
+  border-radius:12px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.blog-header h2{
+  font-size:28px;
+  font-weight:900;
+  color:hsl(180, 100%, 13%);
+}
+
+/* السلايدر */
+.blog-slider{
+  overflow:hidden;
+  width:100%;
+  margin-top:40px;
+}
+
+/* الحركة */
+.blog-track{
+  display:flex;
+  gap:20px;
+  width:max-content;
+  animation:move 15s linear infinite;
+}
+
+/* الكارت */
+.blog-card{
+  min-width:250px; /* 👈 5 كروت جنب بعض */
+  background:hsl(184, 100%, 23%);
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgb(255, 255, 255);
+  color:#fff;
+  flex-shrink:0;
+}
+
+.blog-card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
+
+.blog-card .info{
+  padding:15px;
+}
+
+.blog-card span{
+  color:#00cfc8;
+  font-size:14px;
+}
+
+.blog-card p{
+  margin-top:10px;
+  color:#fff;
+}
+
+.arrows-circle button:hover{
+  transform:scale(1.1);
+  box-shadow:0 10px 20px rgba(0,207,200,0.3);
+}
+/* حركة مستمرة */
+@keyframes move{
+  0%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(-50%);
+  }
+}
+
+/* ===================== */
+/* 📱 Responsive */
+/* ===================== */
+
+@media(max-width:768px){
+  .blog-card{
+    min-width:200px;
+  }
+
+  .blog-header h2{
+    font-size:22px;
+  }
+}
+
+@media(max-width:480px){
+  .blog-card{
+    min-width:180px;
+  }
+
+  .blog-header h2{
+    font-size:18px;
+  }
+}
+
+.contact{
+  background:#0b1220; /* كحلي غامق */
+  padding:100px 20px;
+  color:#fff;
+
+  display:flex;
+  justify-content:flex-start; /* 👈 كله على اليمين */
+  align-items:center;
+}
+
+/* المحتوى */
+.contact-content{
+  max-width:600px;
+
+  /* 👇 تأكيد أنه يمين */
+  text-align:right;
+  direction:rtl;
+}
+
+/* H6 */
+.contact-content h6{
+  color:#00cfc8;
+  font-size:14px;
+  margin-bottom:10px;
+  letter-spacing:1px;
+}
+
+/* H1 */
+.contact-content h1{
+  font-size:34px;
+  font-weight:900;
+  line-height:1.5;
+  margin-bottom:25px;
+}
+
+/* الزرار */
+.contact-btn{
+  display:inline-block;
+  padding:12px 25px;
+  background:linear-gradient(90deg,#00cfc8,#2f80ff);
+  color:#000;
+  font-weight:700;
+  border-radius:30px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.contact-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(0,207,200,0.3);
+}
+
+/* 📱 موبايل */
+@media(max-width:768px){
+  .contact{
+    justify-content:flex-end;
+  }
+
+  .contact-content h1{
+    font-size:24px;
+  }
+}
+
+
+
+
+.footer{
+  background:#0b1220;
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  padding:60px 40px;
+  flex-wrap:wrap;
+  gap:40px;
+}
+
+/* يمين */
+.footer-right{
+  flex:1;
+  min-width:250px;
+}
+
+.logo{
+  width:120px;
+  margin-bottom:15px;
+}
+
+.contact-info p{
+  margin:8px 0;
+  color:#cfd8e3;
+}
+
+/* السوشيال */
+.social{
+  text-align:center;
+  margin-top:20px;
+}
+
+.social h3{
+  color:#00d2d3;
+  margin-bottom:10px;
+}
+
+.social a{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  margin:5px;
+  font-size:18px;
+  color:#fff;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+/* ألوان كل منصة */
+.social .fb{background:#1877f2;}
+.social .ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);}
+.social .tt{background:#000;}
+.social .li{background:#0a66c2;}
+.social .yt{background:#ff0000;}
+
+/* hover */
+.social a:hover{
+  transform:translateY(-5px) scale(1.1);
+  filter:brightness(1.2);
+}
+
+/* وسط */
+.footer-center{
+  flex:1;
+  min-width:250px;
+}
+
+.footer-center h3{
+  color:#00cfc8;
+  margin-bottom:15px;
+}
+
+.footer-center ul{
+  list-style:none;
+  padding:0;
+}
+
+.footer-center ul li{
+  margin:8px 0;
+  color:#cfd8e3;
+}
+
+/* شمال */
+.footer-left{
+  flex:1;
+  min-width:250px;
+}
+
+.footer-left h3,
+.footer-left h4{
+  color:#00cfc8;
+  margin-bottom:10px;
+}
+
+.footer-left p{
+  color:#cfd8e3;
+  margin-bottom:10px;
+}
+ul li a{
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+ul li a:hover{
+  color: #2FAF9B; /* تركوازي */
+}
+/* 📱 موبايل */
+@media(max-width:768px){
+  .footer{
+    flex-direction:column;
+    text-align:center;
+    align-items:center;
+  }
+}
+
+</style>
+</head>
+
+<body>
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
+
+<header>
+  <!-- لوجو -->
+  <div class="logo">
+    <img src="Asset 1.png">
+  </div>
+
+  <!-- منيو -->
+<div class="menu-toggle">☰</div>
+  <nav class="nav">
+    <ul>
+
+      <li><a href="index1.html">الرئيسية</a></li>
+      <li><a href="about1.html">من نحن</a></li>
+
+      <!-- خدمات -->
+      <li class="has-dropdown">
+        <a href="#">خدماتنا</a>
+
+        <div class="dropdown">
+
+          <div class="group">
+            <h3 style="color:#00d2d3; text-decoration:none;" > التسويق الرقمي</a></h3>
+            <a href="accounts.html">إدارة الحسابات السوشيال ميديا</a><br>
+          
+            <a href="video.html">الإنتاج البصري</a><br>
+          </div>
+
+          <hr>
+
+          <div class="group">
+            <h3 style="color:#00d2d3; text-decoration:none;" > برامجه</a></h3>
+            <a href="websites.html">المواقع</a><br>
+            <a href="stores.html">المتاجر</a><br>
+            <a href="apps.html">التطبيقات</a><br>
+            <a href="apps.html">االامن السيبراني</a><br>
+          </div>
+
+          <hr>
+
+          <div class="group">
+          <h3 style="color:#00d2d3; text-decoration:none;">التصميم </a></h3> 
+           <a href="print.html"> تصميم جرافييك</a><br> 
+           <a href="branding.html">الهوية البصرية</a><br>
+          </div>
+
+        </div>
+      </li>
+
+      <li><a href="projects.html">أعمالنا</a></li>
+      <li><a href="contact.html">اتصل بنا</a></li>
+
+    </ul>
+  </nav>
+
+<div class="left">
+<div class="lang">
+    <span>AR ▼</span>
+
+    <div class="lang-box">
+      <a href="portfolio.html">
+        <div>
+          <img src="https://flagcdn.com/eg.svg">
+          العربية
+        </div>
+      </a>
+      <a href="en/index.html">
+        <div>
+          <img src="https://flagcdn.com/us.svg">
+          English
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="btn" style="color:#f9fcfc; text-decoration:none;" >
+    <a href="start.html">ابدأ الآن</a>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<section class="contact">
+
+  <div class="contact-content">
+
+    <h6>لنبدأ التعاون والإبداع</h6>
+
+    <h1>تواصل معنا.. هل أنت <br>
+        مستعد لبدء رحلتك الرقمية؟</h1>
+
+    <a href="contact.html" class="contact-btn">
+      ابدأ مشروعك الآن
+    </a>
+
+  </div>
+
+</section>
+<script>
+const cursor = document.querySelector(".cursor");
+const dot = document.querySelector(".cursor-dot");
+
+document.addEventListener("mousemove", (e)=>{
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+
+  dot.style.left = e.clientX + "px";
+  dot.style.top = e.clientY + "px";
+});
+
+/* تكبير عند الوقوف على عناصر */
+const hoverItems = document.querySelectorAll("a, button, .card");
+
+hoverItems.forEach(el=>{
+  el.addEventListener("mouseenter", ()=>{
+    cursor.classList.add("hover-effect");
+  });
+
+  el.addEventListener("mouseleave", ()=>{
+    cursor.classList.remove("hover-effect");
+  });
+});
+
+document.querySelectorAll(".faq-item").forEach(item => {
+  const btn = item.querySelector(".faq-question");
+
+  btn.addEventListener("click", () => {
+    item.classList.toggle("active");
+  });
+});
+
+
+const menuBtn = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav");
+const dropdown = document.querySelector(".has-dropdown");
+
+menuBtn.onclick = () => {
+  nav.classList.toggle("active");
+};
+
+// فتح الخدمات بالموبايل
+dropdown.onclick = () => {
+  dropdown.classList.toggle("active");
+};
+
+function toggle(btn){
+  btn.classList.toggle("active");
+}
+
+function getSelected(){
+  let items = document.querySelectorAll(".opt.active");
+  return Array.from(items).map(b => b.innerText).join(", ");
+}
+
+function sendWhatsApp(){
+
+  let name = document.getElementById("name").value;
+  let company = document.getElementById("company").value;
+  let phone = document.getElementById("phone").value;
+  let email = document.getElementById("email").value;
+  let message = document.getElementById("message").value;
+
+  let services = getSelected();
+
+  let text = `
+📩 طلب جديد
+👤 الاسم: ${name}
+🏢 الشركة: ${company}
+📞 الهاتف: ${phone}
+📧 البريد: ${email}
+
+💼 الخدمات: ${services}
+
+💬 الرسالة: ${message}
+`;
+
+  let url = "https://wa.me/2010787653758?text=" + encodeURIComponent(text);
+
+  window.open(url, "_blank");
+}
+
+
+let images = [
+  "process_1.png",
+  "imeg (11).png",
+  "process_3.png"
+];
+
+function changeStep(index){
+
+  let boxes = document.querySelectorAll(".box");
+
+  boxes.forEach(box => box.classList.remove("active"));
+
+  boxes[index].classList.add("active");
+
+  document.getElementById("mainImg").src = images[index];
+}
+</script>
+<footer class="footer">
+
+  <!-- يمين -->
+  <div class="footer-right">
+
+    <img src="Asset 1.png" class="logo">
+
+    <div class="contact-info">
+      <p>📧 email@example.com</p>
+      <p>📞 +20 123 456 789</p>
+    </div>
+
+<div class="social">
+
+  <h3>تابعنا على</h3>
+
+  <a class="fb" href="https://www.facebook.com/share/1Nt1BQyPxJ/?mibextid=wwXIfr" target="_blank">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+
+  <a class="ig" href="https://www.instagram.com/_0mada_?igsh=MTdqeWltM2swZXJ3OA%3D%3D&utm_source=qr" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+  <a class="tt" href="https://www.tiktok.com" target="_blank">
+    <i class="fa-brands fa-tiktok"></i>
+  </a>
+
+  <a class="li" href="https://www.linkedin.com" target="_blank">
+    <i class="fa-brands fa-linkedin-in"></i>
+  </a>
+
+  <a class="yt" href="https://www.youtube.com" target="_blank">
+    <i class="fa-brands fa-youtube"></i>
+  </a>
+
+</div>
+
+  </div>
+
+  <!-- وسط -->
+  <div class="footer-center">
+
+    <h3>الخدمات التي نقدمها</h3>
+    <ul>
+  <li><a href="digital-marketing.html">التسويق الرقمي</a></li>
+  <li><a href="web-design.html">تصميم المواقع</a></li>
+  <li><a href="reels.html">تصوير الريلز</a></li>
+  <li><a href="video-production.html">إنتاج المرئي</a></li>
+  <li><a href="social-management.html">إدارة الحسابات</a></li>
+  <li><a href="branding.html">الهوية البصرية</a></li>
+  <li><a href="print-design.html">تصميم الطباعة</a></li>
+</ul>
+
+  </div>
+
+  <!-- شمال -->
+  <div class="footer-left">
+
+    <h3>📍 العنوان</h3>
+
+    <p>  الشرقية_كفر الصقر</p>
+
+    <h4>ساعات العمل</h4>
+    <p>من 9 صباحًا إلى 6 مساءً</p>
+
+  </div>
+
+</footer>
+</body>
+</html>
