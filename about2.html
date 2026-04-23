@@ -1,0 +1,2239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+ <title>made</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+
+/* ===== أساسيات مهمة ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* يمنع السحب يمين وشمال */
+html, body{
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+/* يخلي الصور والفيديو متجاوبة */
+img, video, iframe{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+/* يخلي أي عنصر يحترم عرض الشاشة */
+section, div{
+  max-width:100%;
+}
+
+/* ===== نظام مرن تلقائي ===== */
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+/* عناصر جوا الكونتينر */
+.container > *{
+  flex:1 1 300px; /* 👈 سحر الموبايل */
+}
+
+/* ===== موبايل ===== */
+@media(max-width:768px){
+
+  h1{
+    font-size:22px;
+  }
+
+  h2{
+    font-size:18px;
+  }
+
+  p{
+    font-size:14px;
+  }
+
+  .container{
+    flex-direction:column;
+  }
+
+}
+
+/* إخفاء الماوس الطبيعي */
+body{
+  cursor:none;
+}
+
+/* الدائرة الكبيرة */
+.cursor{
+  width:40px;
+  height:40px;
+  border:2px solid #00cfc8;
+  border-radius:50%;
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+  transition:0.15s ease;
+  z-index:9999;
+  animation:spin 4s linear infinite;
+}
+
+/* النقطة الصغيرة */
+.cursor-dot{
+  width:8px;
+  height:8px;
+  background:#00cfc8;
+  border-radius:50%;
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* تكبير عند الـ hover */
+.hover-effect{
+  transform:scale(1.8);
+  background:rgba(0,207,200,0.1);
+}
+
+/* دوران */
+@keyframes spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+/* ===== أساسيات ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Tajawal', sans-serif;
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:999;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+   background:#0b1220;
+  box-shadow:0 5px 20px rgb(0, 0, 0);
+}
+
+/* ===== اللوجو ===== */
+.logo img{
+  height:28px;
+}
+
+/* ===== النص ===== */
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:18px;
+}
+
+nav ul li{
+  position:relative;
+}
+
+nav ul li a{
+  color:rgb(0, 0, 0);
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+}
+
+/* ===== Dropdown خدمات ===== */
+.dropdown{
+  position:absolute;
+  top:100%;
+  right:0;
+
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(10px);
+
+  width:260px;
+  border-radius:10px;
+  padding:10px;
+
+  display:none;
+  flex-direction:column;
+  gap:8px;
+}
+
+.dropdown h4{
+  color:#0b0b0b;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.dropdown a{
+  color:#050505;
+  font-size:13px;
+  padding:4px;
+  text-decoration:none;
+}
+
+.dropdown a:hover{
+  background:rgba(255,255,255,0.1);
+  border-radius:5px;
+}
+
+nav ul li:hover .dropdown{
+  display:flex;
+}
+
+/* ===== لغة ===== */
+.lang{
+  position:relative;
+  color:rgb(254, 251, 251);
+  cursor:pointer;
+  font-size:14px;
+}
+
+.lang-box{
+  display:none;
+  position:absolute;
+  top:100%;
+  right:0;
+
+  background:white;
+  border-radius:8px;
+  overflow:hidden;
+
+  min-width:120px;
+}
+
+.lang-box a{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  padding:8px;
+  text-decoration:none;
+  color:black;
+  font-size:13px;
+}
+
+.lang:hover .lang-box{
+  display:block;
+}
+
+/* ===== زرار ===== */
+.btn {
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg, #2FAF9B,
+    #2D8FB0,
+    #1E3A8A ); /* مزيج 3 ألوان */
+  transition: transform 0.3s ease;
+
+}
+/* ===== الروابط الأساسية ===== */
+nav ul li a{
+  color:rgb(255, 252, 252);
+  text-decoration:none;
+  font-weight:600;
+  padding:5px 8px;
+  border-radius:6px;
+  transition:0.3s;
+}
+
+/* Hover للصفحات الأساسية */
+nav ul li a:hover{
+  background:rgba(0,0,0,0.25);
+  color:#6dfff0;   /* لون مختلف */
+}
+
+/* ===== Dropdown (الخدمات الداخلية) ===== */
+.dropdown a{
+  color:#ddd;
+  text-decoration:none;
+  font-size:13px;
+  padding:5px;
+  border-radius:5px;
+  transition:0.3s;
+}
+
+/* Hover للخدمات (تركواز) */
+.dropdown a:hover{
+  color:#00d2d3;
+  transform:translateX(-4px);
+  background:rgba(255,255,255,0.1);
+}
+
+/* ===== عناوين الأقسام داخل الخدمات ===== */
+.dropdown h3{
+  color:#00d2d3;
+  font-size:13px;
+  margin:8px 0 3px;
+}
+
+/* ===== وسط المنيو ===== */
+.center ul{
+  display:flex;
+  gap:15px;
+}
+
+/* ===== left/right ===== */
+.left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.lang-box a img{
+  width:18px;
+  height:12px;
+  object-fit:cover;
+  border-radius:2px;
+}
+/* ===== Responsive ===== */
+/* زرار المينيو */
+.menu-toggle{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+  z-index:1001;
+}
+
+/* موبايل */
+@media(max-width:768px){
+
+  .menu-toggle{
+    display:block;
+    color:#fff;
+  }
+
+  /* القائمة الجانبية */
+  .nav{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:80%;
+    height:100vh;
+    background:#0b0b0b;
+    transition:0.4s;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .nav.active{
+    right:0;
+  }
+
+  .nav ul{
+    flex-direction:column;
+    gap:25px;
+    margin-top:40px;
+  }
+
+  .nav ul li a{
+    font-size:18px;
+    display:block;
+    padding:10px;
+  }
+
+  /* dropdown في الموبايل */
+  .dropdown{
+    position:static;
+    display:none;
+    background:#111;
+    width:100%;
+    margin-top:10px;
+  }
+
+  .has-dropdown.active .dropdown{
+    display:flex;
+  }
+
+  .lang{
+    margin-top:20px;
+  }
+
+  .btn{
+    margin-top:20px;
+    text-align:center;
+  }
+}
+.blog{
+  padding:80px 20px;
+  text-align:center;
+  background:#fff; /* 👈 خلفية بيضاء */
+  overflow:hidden;
+  color:#000;
+}
+
+/* الهيدر */
+.blog-header .badge{
+  display:inline-block;
+  background:#00cfc8;
+  color:#000;
+  padding:10px 25px;
+  border-radius:12px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.blog-header h2{
+  font-size:28px;
+  font-weight:900;
+  color:hsl(180, 100%, 13%);
+}
+
+/* السلايدر */
+.blog-slider{
+  overflow:hidden;
+  width:100%;
+  margin-top:40px;
+}
+
+/* الحركة */
+.blog-track{
+  display:flex;
+  gap:20px;
+  width:max-content;
+  animation:move 15s linear infinite;
+}
+
+/* الكارت */
+.blog-card{
+  min-width:250px; /* 👈 5 كروت جنب بعض */
+  background:hsl(184, 100%, 23%);
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgb(255, 255, 255);
+  color:#fff;
+  flex-shrink:0;
+}
+
+.blog-card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
+
+.blog-card .info{
+  padding:15px;
+}
+
+.blog-card span{
+  color:#00cfc8;
+  font-size:14px;
+}
+
+.blog-card p{
+  margin-top:10px;
+  color:#fff;
+}
+
+.arrows-circle button:hover{
+  transform:scale(1.1);
+  box-shadow:0 10px 20px rgba(0,207,200,0.3);
+}
+/* حركة مستمرة */
+@keyframes move{
+  0%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(-50%);
+  }
+}
+
+/* ===================== */
+/* 📱 Responsive */
+/* ===================== */
+/* ===================== */
+@media(max-width:768px){
+
+  .blog{
+    padding:50px 15px;
+  }
+
+  .blog-header h2{
+    font-size:20px;
+  }
+
+  .blog-card{
+    min-width:220px;
+  }
+
+  .blog-track{
+    animation:move 22s linear infinite; /* أبطأ للموبايل */
+  }
+}
+
+/* 📱 SMALL PHONE */
+@media(max-width:480px){
+
+  .blog-header h2{
+    font-size:18px;
+  }
+
+  .blog-card{
+    min-width:180px;
+  }
+
+  .blog-card img{
+    height:140px;
+  }
+
+  .blog-track{
+    animation:move 25s linear infinite;
+  }
+}
+.contact{
+  background:#0b1220; /* كحلي غامق */
+  padding:100px 20px;
+  color:#fff;
+
+  display:flex;
+  justify-content:flex-start; /* 👈 كله على اليمين */
+  align-items:center;
+}
+
+/* المحتوى */
+.contact-content{
+  max-width:600px;
+
+  /* 👇 تأكيد أنه يمين */
+  text-align:right;
+  direction:rtl;
+}
+
+/* H6 */
+.contact-content h6{
+  color:#00cfc8;
+  font-size:14px;
+  margin-bottom:10px;
+  letter-spacing:1px;
+}
+
+/* H1 */
+.contact-content h1{
+  font-size:34px;
+  font-weight:900;
+  line-height:1.5;
+  margin-bottom:25px;
+}
+
+/* الزرار */
+.contact-btn{
+  display:inline-block;
+  padding:12px 25px;
+  background:linear-gradient(90deg,#00cfc8,#2f80ff);
+  color:#000;
+  font-weight:700;
+  border-radius:30px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.contact-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(0,207,200,0.3);
+}
+
+/* ===================== */
+@media(max-width:768px){
+
+  .contact{
+    justify-content:center; /* 👈 بدل اليمين */
+    text-align:center;
+    padding:70px 15px;
+  }
+
+  .contact-content{
+    text-align:center;
+    max-width:100%;
+  }
+
+  .contact-content h1{
+    font-size:22px;
+    line-height:1.4;
+  }
+
+  .contact-content h6{
+    font-size:13px;
+  }
+
+  .contact-btn{
+    padding:10px 20px;
+    font-size:14px;
+  }
+}
+
+/* 📱 موبايل صغير */
+@media(max-width:480px){
+
+  .contact-content h1{
+    font-size:20px;
+  }
+}
+
+.footer{
+  background:#0b1220;
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  padding:60px 40px;
+  flex-wrap:wrap;
+  gap:40px;
+}
+
+/* يمين */
+.footer-right{
+  flex:1;
+  min-width:250px;
+}
+
+.logo{
+  width:120px;
+  margin-bottom:15px;
+}
+
+.contact-info p{
+  margin:8px 0;
+  color:#cfd8e3;
+}
+
+/* السوشيال */
+.social{
+  text-align:center;
+  margin-top:20px;
+}
+
+.social h3{
+  color:#00d2d3;
+  margin-bottom:10px;
+}
+
+.social a{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  margin:5px;
+  font-size:18px;
+  color:#fff;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+/* ألوان كل منصة */
+.social .fb{background:#1877f2;}
+.social .ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);}
+.social .tt{background:#000;}
+.social .li{background:#0a66c2;}
+.social .yt{background:#ff0000;}
+
+/* hover */
+.social a:hover{
+  transform:translateY(-5px) scale(1.1);
+  filter:brightness(1.2);
+}
+
+/* وسط */
+.footer-center{
+  flex:1;
+  min-width:250px;
+}
+
+.footer-center h3{
+  color:#00cfc8;
+  margin-bottom:15px;
+}
+
+.footer-center ul{
+  list-style:none;
+  padding:0;
+}
+
+.footer-center ul li{
+  margin:8px 0;
+  color:#cfd8e3;
+}
+
+/* شمال */
+.footer-left{
+  flex:1;
+  min-width:250px;
+}
+
+.footer-left h3,
+.footer-left h4{
+  color:#00cfc8;
+  margin-bottom:10px;
+}
+
+.footer-left p{
+  color:#cfd8e3;
+  margin-bottom:10px;
+}
+ul li a{
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+ul li a:hover{
+  color: #2FAF9B; /* تركوازي */
+}
+/* 📱 موبايل */
+/* ===================== */
+@media(max-width:768px){
+
+  .footer{
+    flex-direction:column;
+    text-align:center;
+    align-items:center;
+    padding:40px 15px;
+    gap:30px;
+  }
+
+  .footer-right,
+  .footer-center,
+  .footer-left{
+    width:100%;
+  }
+
+  .social{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .footer-center ul li{
+    font-size:14px;
+  }
+
+  .footer-left p{
+    font-size:14px;
+  }
+
+  .logo{
+    width:100px;
+  }
+}
+
+/* 📱 موبايل صغير */
+@media(max-width:480px){
+
+  .social a{
+    width:40px;
+    height:40px;
+    font-size:16px;
+  }
+
+  .footer-center h3,
+  .footer-left h3{
+    font-size:16px;
+  }
+}
+
+.section{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:50px;
+  gap:40px;
+  direction:rtl;
+}
+
+/* المستطيل */
+.right-box{
+  flex:1;
+  background:linear-gradient(135deg,#2FAF9B,#2D8FB0,#1E3A8A);
+  color:white;
+  padding:50px;
+  border-radius:40px 0 40px 40px;
+
+  display:flex;
+  flex-direction:column;  /* 👈 مهم جدًا */
+  align-items:flex-start;
+  gap:15px;
+}
+
+/* عنوان صغير */
+.title{
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* العنوان الرئيسي */
+.right-box h1{
+  margin:0;
+  font-size:26px;
+  line-height:1.5;
+}
+
+/* النص */
+.right-box p{
+  margin:0;
+  font-size:14px;
+  line-height:1.8;
+  opacity:0.9;
+}
+
+/* الزرار */
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:12px 20px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  color:white;
+  background:linear-gradient(45deg,#2FAF9B,#2D8FB0,#1E3A8A);
+}
+
+/* الصورة */
+.left-img{
+  flex:1;
+  display:flex;
+  justify-content:center;
+}
+
+.left-img img{
+  width:350px;
+  height:400px;
+  object-fit:cover;
+  border-radius:20px;
+
+  border:5px solid transparent;
+  background:linear-gradient(#fff,#fff) padding-box,
+  linear-gradient(135deg,#2FAF9B,#2D8FB0,#1E3A8A) border-box;
+}
+
+/* موبايل */
+@media(max-width:768px){
+
+  .section{
+    flex-direction:column;
+    padding:30px 15px;
+    gap:25px;
+    text-align:center;
+  }
+
+  .right-box{
+    align-items:center;
+    text-align:center;
+    padding:25px;
+    border-radius:25px;
+  }
+
+  .right-box h1{
+    font-size:20px;
+  }
+
+  .right-box p{
+    font-size:13px;
+  }
+
+  .btn{
+    padding:10px 18px;
+    font-size:14px;
+  }
+
+  .left-img img{
+    width:100%;
+    max-width:300px;
+    height:auto;
+  }
+}
+
+/* 📱 موبايل صغير */
+@media(max-width:480px){
+
+  .right-box h1{
+    font-size:18px;
+  }
+
+  .title{
+    font-size:16px;
+  }
+
+  .right-box{
+    padding:20px;
+  }
+}
+/* ===== الخلفية الكحلي ===== */
+.contact-section{
+  display:flex;
+  gap:30px;
+  padding:60px;
+  background:#0b1b2b;
+  color:white;
+}
+
+/* يمين النص */
+.right-info{
+  flex:1;
+}
+
+.dots{
+  color:#2FAF9B;
+  margin:0;
+  letter-spacing:3px;
+}
+
+.title{
+  color:#2FAF9B;
+  margin:10px 0;
+}
+
+.right-info h1{
+  margin:10px 0;
+  font-size:30px;
+}
+
+.rating{
+  margin-top:10px;
+  font-size:14px;
+}
+.form{
+  width:100%;
+  max-width:60px;
+  background:#121212;
+  padding:30px;
+  border-radius:15px;
+  color:white;
+}
+
+input, textarea{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border:none;
+  border-radius:10px;
+  background:#1f1f1f;
+  color:white;
+}
+
+textarea{
+  height:100px;
+}
+
+/* اختيارات */
+.options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:10px 0;
+}
+
+.opt{
+  padding:8px 12px;
+  border-radius:20px;
+  border:1px solid #555;
+  background:transparent;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.opt.active{
+  background:linear-gradient(45deg,#2FAF9B,#2D8FB0,#1E3A8A);
+  border:none;
+}
+
+/* زرار الإرسال */
+.send{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:30px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
+
+  background:linear-gradient(45deg,#2FAF9B,#2D8FB0,#1E3A8A);
+}
+/* موبايل */
+/* 📱 موبايل */
+@media(max-width:768px){
+  .contact-section{
+    flex-direction:column;
+    padding:30px 20px;
+    text-align:center;
+  }
+
+  .right-info{
+    text-align:center;
+  }
+
+  .form{
+    width:100%;
+    max-width:100%;
+  }
+}
+
+/* ===== سيكشن التواصل فقط ===== */
+.custom-contact{
+  display:flex;
+  gap:30px;
+  padding:60px 20px;
+  background:#0b1b2b;
+  color:white;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap; /* 👈 مهم للموبايل */
+}
+
+/* يمين */
+.custom-contact .right-info{
+  margin-top:-70px; /* 👈 ارفعيه لفوق */
+}
+.custom-contact .dots{
+  color:#2FAF9B;
+  letter-spacing:3px;
+}
+
+.custom-contact .title{
+  color:#2FAF9B;
+}
+
+.custom-contact h1{
+  font-size:30px;
+}
+
+.custom-contact .rating{
+  font-size:14px;
+}
+
+/* الفورم */
+.custom-contact .form{
+  flex:1;
+  min-width:600px;
+  max-width:500px;
+  background:#121212;
+  padding:25px;
+  border-radius:15px;
+}
+
+/* الحقول */
+.custom-contact input,
+.custom-contact textarea{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border:none;
+  border-radius:10px;
+  background:#1f1f1f;
+  color:white;
+  font-size:14px;
+}
+
+.custom-contact textarea{
+  height:110px;
+}
+
+/* الاختيارات */
+.custom-contact .options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.custom-contact .opt{
+  padding:10px 14px;
+  border-radius:20px;
+  border:1px solid #555;
+  background:transparent;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.custom-contact .opt.active{
+  background:linear-gradient(45deg,#2FAF9B,#2D8FB0,#1E3A8A);
+  border:none;
+}
+
+/* زرار */
+.custom-contact .send{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
+  background:linear-gradient(45deg,#2FAF9B,#2D8FB0,#1E3A8A);
+}
+
+/* 📱 موبايل */
+
+/* 📱 موبايل */
+@media(max-width:768px){
+  .custom-contact{
+    flex-direction:column;
+    text-align:center;
+    padding:30px 15px;
+  }
+
+  .custom-contact .right-info{
+    margin-top:0; /* مهم جدًا عشان ما يكسرش الشكل */
+  }
+
+  .custom-contact .form{
+    width:100%;
+    max-width:100%;
+  }
+
+  .custom-contact h1{
+    font-size:22px;
+  }
+}
+
+
+.steps-section{
+  display:flex;
+  gap:40px;
+  padding:60px;
+  background:#0b1b2b;
+  color:white;
+  align-items:center;
+}
+
+/* الصورة */
+.left-img{
+  flex:1;
+  display:flex;
+  justify-content:center;
+}
+
+.left-img img{
+  width:100%;
+  max-width:400px;
+  border-radius:20px;
+  transition:0.4s;
+}
+
+/* المربعات */
+.right-boxes{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.box{
+  background:#111;
+  padding:20px;
+  border-radius:15px;
+  cursor:pointer;
+  border:1px solid #333;
+  transition:0.3s;
+}
+
+.box h3{
+  color:#2FAF9B;
+}
+
+.box p{
+  display:none;
+  color:#ccc;
+}
+
+/* عند التفعيل */
+.box.active{
+  background:linear-gradient(135deg,#2FAF9B,#2D8FB0,#1E3A8A);
+}
+
+.box.active p{
+  display:block;
+}
+
+/* موبايل */
+/* 📱 موبايل */
+@media(max-width:768px){
+  .steps-section{
+    flex-direction:column;
+    text-align:center;
+    padding:30px 15px;
+    gap:20px;
+  }
+
+  .left-img img{
+    max-width:300px;
+    width:100%;
+  }
+
+  .right-boxes{
+    width:100%;
+  }
+
+  .box{
+    text-align:center;
+  }
+}
+
+/* السيكشن */
+.work-section{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:40px;
+  padding:60px 20px;
+  background:#0b1b2b;
+  color:white;
+  flex-wrap:wrap;
+}
+
+/* اليمين */
+.right-side{
+  flex:1;
+  min-width:280px;
+}
+
+/* المستطيل */
+.badge{
+  display:inline-block;
+  background:#2FAF9B;
+  color:#000;
+  padding:8px 20px;
+  border-radius:10px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+/* العنوان */
+.right-side h1{
+  font-size:32px;
+  line-height:1.6;
+}
+
+/* الشمال */
+.left-side{
+  flex:1;
+  min-width:280px;
+}
+
+/* الفقرة */
+.left-side p{
+  font-size:15px;
+  line-height:1.8;
+  color:#ccc;
+}
+
+/* الزرار */
+.work-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+
+  background:linear-gradient(45deg,#2FAF9B,#2D8FB0,#1E3A8A);
+  transition:0.3s;
+}
+
+.work-btn:hover{
+  transform:translateY(-3px);
+}
+
+
+/* 📱 موبايل */
+@media(max-width:768px){
+  .work-section{
+    flex-direction:column;
+    text-align:center;
+    padding:30px 15px;
+    gap:20px;
+  }
+
+  .right-side,
+  .left-side{
+    width:100%;
+  }
+
+  .right-side h1{
+    font-size:22px;
+    line-height:1.5;
+  }
+
+  .left-side p{
+    font-size:14px;
+  }
+}
+
+
+.marquee{
+  width:100%;
+  overflow:hidden;
+  background:#ffffff;
+  padding:12px 0;
+  border-radius:0px;
+  box-sizing:border-box;
+  position:relative;
+}
+
+.track{
+  display:inline-block;
+  white-space:nowrap;
+  will-change:transform;
+  animation:moveText 12s linear infinite;
+}
+
+.track span{
+  color:#222;
+  font-size:clamp(14px, 2vw, 18px);
+  font-weight:bold;
+}
+
+@keyframes moveText{
+  0%{
+    transform:translateX(100%);
+  }
+  100%{
+    transform:translateX(-100%);
+  }
+}
+
+/* 📱 موبايل */
+@media(max-width:768px){
+  .marquee{
+    padding:10px 0;
+  }
+
+  .track{
+    animation-duration:18s; /* أبطأ عشان الموبايل */
+  }
+
+  .track span{
+    font-size:14px;
+  }
+}
+
+.about-section{
+  display:flex;
+  gap:40px;
+  padding:60px 20px;
+  background:#fff;
+  flex-wrap:wrap;
+}
+
+/* يمين */
+.about-section .right-content{
+  flex:1;
+  min-width:280px;
+}
+
+.about-section .trust-box{
+  background:#2FAF9B;
+  padding:10px 20px;
+  border-radius:10px;
+  display:inline-block;
+  margin-bottom:20px;
+  color:#fff;
+}
+
+.about-section .right-content h1{
+  font-size:28px;
+  line-height:1.6;
+  color:#0b1b2b;
+}
+
+/* شمال */
+.about-section .left-content{
+  flex:1;
+  min-width:300px;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+
+/* الصف */
+.about-section .row{
+  display:flex;
+  gap:15px;
+  align-items:center;
+  justify-content:flex-end;
+}
+
+/* الصورة */
+.about-section .img{
+  width:50%;
+  height:200px;
+  object-fit:cover;
+  border-radius:15px;
+}
+
+/* المربع */
+.about-section .box{
+  width:50%;
+  background:#f5f5f5;
+  padding:20px;
+  border-radius:15px;
+}
+
+/* المميز */
+.about-section .highlight{
+  background:linear-gradient(135deg,#2FAF9B,#2D8FB0);
+  color:white;
+  text-align:center;
+}
+
+.about-section .highlight p{
+  color:#000000;
+}
+
+/* 50+ */
+.about-section .big{
+  font-size:45px;
+  font-weight:900;
+  margin:0;
+}
+
+/* 📱 موبايل */
+@media(max-width:768px){
+  .about-section{
+    flex-direction:column;
+    padding:30px 15px;
+    text-align:center;
+  }
+
+  .about-section .right-content h1{
+    font-size:22px;
+  }
+
+  .about-section .row{
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .about-section .img,
+  .about-section .box{
+    width:100%;
+  }
+
+  .about-section .big{
+    font-size:32px;
+  }
+}
+
+.hero{
+  position:relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+  font-family:'Tajawal', sans-serif;
+}
+
+/* الفيديو */
+.bg-video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:1;
+}
+
+/* الطبقة الشفافة */
+.overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  z-index:2;
+}
+
+/* المحتوى */
+.content{
+  position:relative;
+  z-index:3;
+  text-align:center;
+  top:50%;
+  transform:translateY(-50%);
+  color:white;
+  padding:20px;
+}
+
+/* +15K */
+.badge{
+  display:inline-block;
+  background:#2FAF9B;
+  padding:10px 20px;
+  border-radius:30px;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+/* العنوان */
+.content h1{
+  font-size:34px;
+  margin-bottom:20px;
+  line-height:1.6;
+}
+
+/* النص المتحرك */
+.moving-text{
+  font-size:18px;
+  max-width:700px;
+  margin:auto;
+  animation:moveText 4s ease-in-out infinite alternate;
+}
+
+/* حركة يمين وشمال */
+@keyframes moveText{
+  0%{ transform:translateX(-10px); }
+  100%{ transform:translateX(10px); }
+}
+/* 📱 موبايل */
+@media(max-width:768px){
+  .content h1{
+    font-size:22px;
+    line-height:1.4;
+  }
+
+  .moving-text{
+    font-size:14px;
+    padding:0 10px;
+    animation:none; /* إلغاء الحركة عشان ما تتعبش العين */
+  }
+
+  .badge{
+    padding:8px 15px;
+    font-size:13px;
+  }
+}
+
+
+.hero{
+  position:relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* الفيديو */
+.bg-video{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+
+/* طبقة شفافة */
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  z-index:1;
+}
+
+/* المستطيل التركواز */
+.center-box{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:linear-gradient(135deg,#2FAF9B,#2D8FBF);
+  padding:40px;
+  width:60%;
+  border-radius:20px;
+  text-align:center;
+  z-index:2;
+  color:white;
+  overflow:hidden;
+}
+
+/* العنوان */
+.center-box h1{
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+/* النص المتحرك */
+.marquee{
+  white-space:nowrap;
+  overflow:hidden;
+  display:inline-block;
+  animation:move 10s linear infinite;
+  font-size:16px;
+}
+
+@keyframes move{
+  0%{transform:translateX(100%);}
+  100%{transform:translateX(-100%);}
+}
+
+/* ===== القسم ===== */
+.hero-section{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Tajawal', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+/* الفيديو */
+.hero-section video{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* طبقة شفافة */
+.hero-section .overlay{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+}
+
+/* المحتوى */
+.content{
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  padding: 40px;
+}
+
+/* البيضاوي */
+.badge{
+  display: inline-block;
+  background: #3fd0c9;
+  color: #000;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* العنوان */
+.content h1{
+  font-size: 36px;
+  margin: 15px 0;
+}
+
+/* فقرة متحركة */
+.content p{
+  font-size: 18px;
+  animation: moveText 3s infinite alternate ease-in-out;
+}
+
+/* حركة يمين وشمال */
+@keyframes moveText{
+  0%{transform: translateX(-15px);}
+  100%{transform: translateX(15px);}
+}
+
+/* استجابة الموبايل */
+/* 📱 موبايل */
+@media(max-width:768px){
+
+  .center-box{
+    width:90%;          /* مهم جدًا */
+    padding:20px;
+  }
+
+  .center-box h1{
+    font-size:20px;
+  }
+
+  .marquee{
+    font-size:13px;
+    animation-duration:14s;
+  }
+
+  .content{
+    padding:20px;
+  }
+
+  .content h1{
+    font-size:22px;
+  }
+
+  .content p{
+    font-size:14px;
+    animation:none; /* إلغاء الحركة على الموبايل */
+  }
+
+  .badge{
+    padding:8px 18px;
+    font-size:13px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
+
+<header>
+  <!-- لوجو -->
+  <div class="logo">
+    <img src="Asset 1.png">
+  </div>
+
+  <!-- منيو -->
+<div class="menu-toggle">☰</div>
+  <nav class="nav">
+    <ul>
+
+      <li><a href="index1.html">الرئيسية</a></li>
+      <li><a href="about1.html">من نحن</a></li>
+
+      <!-- خدمات -->
+      <li class="has-dropdown">
+        <a href="#">خدماتنا</a>
+
+        <div class="dropdown">
+
+          <div class="group">
+            <h3 style="color:#00d2d3; text-decoration:none;" > التسويق الرقمي</a></h3>
+            <a href="accounts.html">إدارة الحسابات السوشيال ميديا</a><br>
+          
+            <a href="video.html">الإنتاج البصري</a><br>
+          </div>
+
+          <hr>
+
+          <div class="group">
+            <h3 style="color:#00d2d3; text-decoration:none;" > برامجه</a></h3>
+            <a href="websites.html">المواقع</a><br>
+            <a href="stores.html">المتاجر</a><br>
+            <a href="apps.html">التطبيقات</a><br>
+            <a href="apps.html">االامن السيبراني</a><br>
+          </div>
+
+          <hr>
+
+          <div class="group">
+          <h3 style="color:#00d2d3; text-decoration:none;">التصميم </a></h3> 
+           <a href="print.html"> تصميم جرافييك</a><br> 
+           <a href="branding.html">الهوية البصرية</a><br>
+          </div>
+
+        </div>
+      </li>
+
+      <li><a href="projects.html">أعمالنا</a></li>
+      <li><a href="contact.html">اتصل بنا</a></li>
+
+    </ul>
+  </nav>
+
+<div class="left">
+<div class="lang">
+    <span>AR ▼</span>
+
+    <div class="lang-box">
+      <a href="portfolio.html">
+        <div>
+          <img src="https://flagcdn.com/eg.svg">
+          العربية
+        </div>
+      </a>
+      <a href="en/index.html">
+        <div>
+          <img src="https://flagcdn.com/us.svg">
+          English
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="btn" style="color:#f9fcfc; text-decoration:none;" >
+    <a href="contact.html">ابدأ الآن</a>
+  </div>
+</div>
+</header>
+
+
+<section class="hero-section">
+
+  <!-- فيديو -->
+  <video autoplay muted loop>
+    <source src="120.mp4" type="video/mp4">
+  </video>
+
+  <!-- طبقة شفافة -->
+  <div class="overlay"></div>
+
+  <!-- المحتوى -->
+  <div class="content">
+
+    <div class="badge">15K عميل يثق بينا</div>
+
+    <h1><b>مدي</b>: </b> نقدّم حلولًا رقمية متكاملة<br>
+         لتطوير ونمو أعمالك. </h1>
+
+    <p> نحن شركة رسمية مسجلة بهيئة الاستثمار ومرخصة<br>
+     من وزارة الاتصالات. نقدم مزيجاً فريداً من الإبداع <br>
+        والخبرة التقنية لمساعدة أعمالك على النمو.</p>
+
+  </div>
+
+</section>
+<section class="about-section">
+
+  <!-- اليمين -->
+  <div class="right-content">
+    <div class="trust-box">
+      ⭐⭐⭐⭐ <span>Trustpilot</span>
+    </div>
+
+    <h1>
+      مدي : شركة حلول رقمية متكاملة،<br>
+      متخصصة في حلول الويب والتسويق الإلكتروني.
+    </h1>
+  </div>
+
+  <!-- الشمال -->
+  <div class="left-content">
+
+    <!-- صف 1 -->
+    <div class="row">
+      <div class="box">
+        <div class="icon">🚩</div>
+        <h2>بدأنا رحلتنا منذ عام 2018</h2>
+        <p>
+          بدأنا برؤية واضحة — لإنشاء تجارب رقمية مؤثرة تساعد
+          العلامات التجارية على النمو والازدهار.
+        </p>
+      </div>
+
+      <img src="imeg(8).png" class="img">
+    </div>
+
+    <!-- صف 2 -->
+    <div class="row reverse">
+      <img src="imag (9).png" class="img">
+
+      <div class="box highlight">
+        <h2 class="big">50+</h2>
+        <p>
+          نساعد العلامات التجارية على التميز من خلال التصميم الإبداعي
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<div class="marquee">
+  <div class="track">
+    <span>
+      تصميم وتطوير المواقع والتسويق الرقمي وإدارة الحسابات والإنتاج المرئي وتصوير الريلز تصميم وتطوير المواقع والتسويق الرقمي وإدارة الحسابات والإنتاج المرئي وتصوير الريلز  تصميم وتطوير المواقع والتسويق الرقمي وإدارة الحسابات والإنتاج المرئي تصوير الريلز
+    </span>
+  </div>
+</div>
+<section class="work-section">
+
+  <!-- اليمين -->
+  <div class="right-side">
+    <div class="badge">آلية العمل</div>
+    <h1>آلية عملنا: من التصميم<br>إلى التسليم ببساطة</h1>
+  </div>
+
+  <!-- الشمال -->
+  <div class="left-side">
+    <p>
+      نحن نتبع عملية بسيطة وموجهة نحو النتائج لتحويل رؤيتك إلى حقيقة.
+      من فهم أهدافك إلى التصميم والتطوير، نقدم تأثيرًا حقيقيًا — 
+      في الوقت المحدد وبدقة.
+    </p>
+
+    <a href="contact.html" class="work-btn">تواصل معنا</a>
+  </div>
+
+</section>
+<section class="steps-section">
+
+  <!-- الشمال (الصورة) -->
+  <div class="left-img">
+    <img id="mainImg" src="process_1.png">
+  </div>
+
+  <!-- اليمين -->
+  <div class="right-boxes">
+
+    <div class="box active" onclick="changeStep(0)">
+      <h3>01</h3>
+      <h2> المناقشة والاستشارة </h2>
+      <p>تبدأ رحلتنا بجلسة استماع. نفهم أهدافك، نحلل متطلباتك، ونضع الأساس لرؤية مشتركة وناجحة.</p>
+    </div>
+
+    <div class="box" onclick="changeStep(1)">
+      <h3>02</h3>
+      <h2> الأفكار ووضع التصور</h2>
+      <p>يقوم فريقنا بابتكار الأفكار الأولية وتصميم النماذج (Wireframes) لعرض التصور المقترح، مع التركيز على تجربة المستخدم (UX). </p>
+    </div>
+
+    <div class="box" onclick="changeStep(2)">
+      <h3>03</h3>
+      <h2>التصميم والتنفيذ  </h2>
+      <p> نحول الأفكار إلى تصميمات بصرية جذابة (UI). بعد الموافقة، يبدأ فريق التطوير في برمجة الموقع أو إطلاق الحملة.</p>
+    </div>
+
+  </div>
+
+</section>
+ <section class="contact-section custom-contact">
+    <!-- يمين -->
+ <div class="right-info">
+     <h5 class="dots">• • • التواصل معنا</h5>
+      <h1>لنصنع معاً<br>
+         — تأثيراً</h1> 
+         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="rating">على جوجل<br>
+    ⭐ 4.5 (+50 تقييم) 
+    </div> 
+</div>
+<div class="form">
+
+  <input id="name" placeholder="الاسم">
+  <input id="company" placeholder="اسم الشركة">
+  <input id="phone" placeholder="رقم الهاتف">
+  <input id="email" placeholder="البريد الإلكتروني">
+
+  <h4>أنا مهتم بـ...</h4>
+
+  <div class="options">
+    <button type="button" class="opt" onclick="toggle(this)">تصميم مواقع</button>
+    <button type="button" class="opt" onclick="toggle(this)">متاجر إلكترونية</button>
+    <button type="button" class="opt" onclick="toggle(this)">تسويق رقمي</button>
+    <button type="button" class="opt" onclick="toggle(this)">إدارة حسابات</button>
+    <button type="button" class="opt" onclick="toggle(this)">إنتاج مرئي</button>
+    <button type="button" class="opt" onclick="toggle(this)">هوية بصرية</button>
+  </div>
+
+  <h4>الميزانية</h4>
+
+  <div class="options">
+    <button type="button" class="opt" onclick="toggle(this)">استشارة مجانية</button>
+    <button type="button" class="opt" onclick="toggle(this)">أقل من 20,000</button>
+    <button type="button" class="opt" onclick="toggle(this)">20,000 - 50,000</button>
+    <button type="button" class="opt" onclick="toggle(this)">أكثر من 50,000</button>
+  </div>
+
+  <textarea id="message" placeholder="رسالتك..."></textarea>
+
+  <button class="send" onclick="sendWhatsApp()">أرسل الآن</button>
+
+</div>
+</section>
+<div class="section">
+
+  <!-- الصورة -->
+  <div class="left-img">
+    <img src="imeg (12).png" alt="team">
+  </div>
+
+  <!-- المحتوى كله في صندوق واحد -->
+  <div class="right-box">
+
+    <div class="title-box">
+        <ul><li>
+      انضم إلينا</li></ul>
+    </div>
+
+    <h1>هل ترغب في الانضمام<br>
+        ___ لفريقنا؟</h1>
+
+    <p>
+      نحن نبحث دائماً عن أفراد شغوفين وموهوبين لمساعدتنا على إحداث تأثير في عالم حلول الويب. هل أنت مستعد للنمو معنا؟
+    </p>
+
+    <a href="#" class="btn">عرض الوظائف</a>
+
+  </div>
+
+</div>
+<section class="blog">
+
+  <div class="blog-header">
+    <div class="badge">المدونة</div>
+    <h2>المدونة — آخر الأخبار<br>
+         والمقالات</h2>
+  </div>
+
+  <div class="blog-slider">
+
+    <div class="blog-track">
+
+      <!-- 1 -->
+      <div class="blog-card">
+        <img src="blog_2_2.png" />
+        <div class="info">
+          <span>20 أبريل 2026</span>
+          <p>أهمية التسويق الرقمي في نمو الأعمال</p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="blog-card">
+        <img src="blog_2_1.png" />
+        <div class="info">
+          <span>18 أبريل 2026</span>
+          <p>كيف تبني هوية تجارية قوية</p>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="blog-card">
+        <img src="blog_2_3 (1).png" />
+        <div class="info">
+          <span>15 أبريل 2026</span>
+          <p>أفضل طرق زيادة التفاعل على السوشيال ميديا</p>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="blog-card">
+        <img src="blog_2_2.png" />
+        <div class="info">
+          <span>10 أبريل 2026</span>
+          <p>سر نجاح الإعلانات الممولة</p>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="blog-card">
+        <img src="blog_2_1.png" />
+        <div class="info">
+          <span>5 أبريل 2026</span>
+          <p>تصميم المواقع وتأثيره على العملاء</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+</div>
+
+<section class="contact">
+
+  <div class="contact-content">
+
+    <h6>لنبدأ التعاون والإبداع</h6>
+
+    <h1>تواصل معنا.. هل أنت <br>
+        مستعد لبدء رحلتك الرقمية؟</h1>
+
+    <a href="contact.html" class="contact-btn">
+      ابدأ مشروعك الآن
+    </a>
+
+  </div>
+
+</section>
+<script>
+
+
+const cursor = document.querySelector(".cursor");
+const dot = document.querySelector(".cursor-dot");
+
+document.addEventListener("mousemove", (e)=>{
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+
+  dot.style.left = e.clientX + "px";
+  dot.style.top = e.clientY + "px";
+});
+
+/* تكبير عند الوقوف على عناصر */
+const hoverItems = document.querySelectorAll("a, button, .card");
+
+hoverItems.forEach(el=>{
+  el.addEventListener("mouseenter", ()=>{
+    cursor.classList.add("hover-effect");
+  });
+
+  el.addEventListener("mouseleave", ()=>{
+    cursor.classList.remove("hover-effect");
+  });
+});
+
+document.querySelectorAll(".faq-item").forEach(item => {
+  const btn = item.querySelector(".faq-question");
+
+  btn.addEventListener("click", () => {
+    item.classList.toggle("active");
+  });
+});
+
+
+const menuBtn = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav");
+const dropdown = document.querySelector(".has-dropdown");
+
+menuBtn.onclick = () => {
+  nav.classList.toggle("active");
+};
+
+// فتح الخدمات بالموبايل
+dropdown.onclick = () => {
+  dropdown.classList.toggle("active");
+};
+
+function toggle(btn){
+  btn.classList.toggle("active");
+}
+
+function getSelected(){
+  let items = document.querySelectorAll(".opt.active");
+  return Array.from(items).map(b => b.innerText).join(", ");
+}
+
+function sendWhatsApp(){
+
+  let name = document.getElementById("name").value;
+  let company = document.getElementById("company").value;
+  let phone = document.getElementById("phone").value;
+  let email = document.getElementById("email").value;
+  let message = document.getElementById("message").value;
+
+  let services = getSelected();
+
+  let text = `
+📩 طلب جديد
+👤 الاسم: ${name}
+🏢 الشركة: ${company}
+📞 الهاتف: ${phone}
+📧 البريد: ${email}
+
+💼 الخدمات: ${services}
+
+💬 الرسالة: ${message}
+`;
+
+  let url = "https://wa.me/2010787653758?text=" + encodeURIComponent(text);
+
+  window.open(url, "_blank");
+}
+
+
+let images = [
+  "process_1.png",
+  "imeg (11).png",
+  "process_3.png"
+];
+
+function changeStep(index){
+
+  let boxes = document.querySelectorAll(".box");
+
+  boxes.forEach(box => box.classList.remove("active"));
+
+  boxes[index].classList.add("active");
+
+  document.getElementById("mainImg").src = images[index];
+}
+</script>
+<footer class="footer">
+
+  <!-- يمين -->
+  <div class="footer-right">
+
+    <img src="Asset 1.png" class="logo">
+
+    <div class="contact-info">
+      <p>📧 email@example.com</p>
+      <p>📞 +20 123 456 789</p>
+    </div>
+   
+<div class="social">
+
+  <h3>تابعنا على</h3>
+
+  <a class="fb" href="https://www.facebook.com/share/1Nt1BQyPxJ/?mibextid=wwXIfr" target="_blank">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+
+  <a class="ig" href="https://www.instagram.com/_0mada_?igsh=MTdqeWltM2swZXJ3OA%3D%3D&utm_source=qr" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+  <a class="tt" href="https://www.tiktok.com" target="_blank">
+    <i class="fa-brands fa-tiktok"></i>
+  </a>
+
+  <a class="li" href="https://www.linkedin.com" target="_blank">
+    <i class="fa-brands fa-linkedin-in"></i>
+  </a>
+
+  <a class="yt" href="https://www.youtube.com" target="_blank">
+    <i class="fa-brands fa-youtube"></i>
+  </a>
+
+</div>
+
+  </div>
+  <!-- وسط -->
+  <div class="footer-center">
+
+    <h3>الخدمات التي نقدمها</h3>
+    <ul>
+  <li><a href="digital-marketing.html">التسويق الرقمي</a></li>
+  <li><a href="web-design.html">تصميم المواقع</a></li>
+  <li><a href="reels.html">تصوير الريلز</a></li>
+  <li><a href="video-production.html">إنتاج المرئي</a></li>
+  <li><a href="social-management.html">إدارة الحسابات</a></li>
+  <li><a href="branding.html">الهوية البصرية</a></li>
+  <li><a href="print-design.html">تصميم الطباعة</a></li>
+</ul>
+
+  </div>
+
+  <!-- شمال -->
+  <div class="footer-left">
+
+    <h3>📍 العنوان</h3>
+
+    <p>  الشرقية_كفر الصقر</p>
+
+    <h4>ساعات العمل</h4>
+    <p>من 9 صباحًا إلى 6 مساءً</p>
+
+  </div>
+
+</footer>
+</body>
+</html>
